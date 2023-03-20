@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Bookie.com</title>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+	</script>
+	<script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">
+	</script>
+</head>
+<style>
+
+	.card-img-top{
+		display: block;
+        margin-left: auto;
+         margin-right: auto;
+         width: 50%;
+
+	}
+	.card-body{
+		 background-color: antiquewhite;
+	     color: black;
+	}
+
+</style>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">
+					Bookie.com</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="/">Home</a></li>
+				<li><a href="/recommend">Find recommendations</a></li>
+				<li><a href="/author">Explore Creators</a></li>
+				<li><a href="/top50">Top books</a></li>
+                <li><a href="#">Connect</a></li>
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<br>
+	 <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-white" style="font-size:50px">Top 50 Books</h1>
+            </div>
+
+            {% for i in range(100) %}
+                <div class="col-md-3" style="margin-top:50px">
+                    <div class="card" style="text-align: center">
+                        <div class="card-body">
+                            <img class="card-img-top" src="{{ image[i] }}">
+                            <h5 class="k" style="text-align: center">{{ book_name[i] }}</h5>
+                            <h8 class="k" style="text-align: center">{{ author[i] }}</h8><br>
+                            <h8 class="k" style="text-align: center">{{ date[i] }}</h8><br>
+                            <h8 class="k" style="text-align: center">{{ categories[i] }}</h8><br>
+                            <h9 class="link-dark"><a href=" {{link[i]}}" </h9>
+                        </div>
+                    </div>
+                </div>
+
+
+            {% endfor %}
+
+
+        </div>
+    </div>
+</body>
+</html>
