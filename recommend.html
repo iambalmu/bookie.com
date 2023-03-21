@@ -14,16 +14,47 @@
 "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">
 	</script>
 </head>
-<body>
+<style>
+	.card-img-top{
+		display: block;
+        margin-left: auto;
+         margin-right: auto;
+         width: 50%;
+
+	}
+	.card-body{
+		 background-color: #DE9D7C;
+	     color: black;
+         padding: 7px;
+         border-radius: 40px;
+	}
+	.k{
+		text-align: center;
+	}
+	.hea{
+			margin: 1em 0 0.5em 0;
+	color: #343434;
+	font-weight: normal;
+	font-family: 'Ultra', sans-serif;
+	font-size: 36px;
+	line-height: 42px;
+	text-transform: uppercase;
+	text-shadow: 0 2px white, 0 3px #777;
+		text-align: center;
+		color: black;
+	}
+
+</style>
+<body style="background-color: #F7EDDE">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">
 					Bookie.com</a>
 			</div>
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav" style="">
 				<li><a href="/">Home</a></li>
-				<li><a href="/recommend">Find recommendations</a></li>
+				<li><a href="/recommend" style="border-bottom: 2px solid #ccc">Find recommendations</a></li>
 				<li><a href="/author">Explore Creators</a></li>
 				<li><a href="/top50">Top books</a></li>
                 <li><a href="#">Connect</a></li>
@@ -37,22 +68,38 @@
         <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-white" style="font-size:50px">Recommend Books</h1>
+                <h1 class="hea" style="font-size:50px">Shoot your favourite book for finding more such books!!!</h1>
                 <form action="/recommend_books" method="post">
-                    <input name="user_input" type="text" class="form-control"><br>
+                      <input name="user_input" type="text" class="form-control"><br>
                     <input type="submit" class="btn btn-lg btn-warning">
                 </form>
             </div>
-
             {% if data %}
+               <div style="display: flex; width: 90%; justify-content: center">
+
+                   <div><h4 style="text-align: center " > More books related to :  </h4></div>
+                   <div style="flex-shrink: 4;flex-grow: 5"> <h4 id="printEl"> </h4></div>
+               </div>
+         <script>
+             function getData(){
+                     var username = document.getElementsByClassName("form-control");
+                }
+             let inputEl=document.getElementById("inputEl")
+             let  printEl =document.getElementById("printEl")
+             let btnEl = document.getElementById("btnEl")
+             function printText() {
+                 let InputItem =inputEl.value;
+                 printEl.textContent=InputItem;
+             }
+         </script>
 
              {% for i in data %}
-                <div class="col-md-3" style="margin-top:50px">
-                    <div class="card">
+                 <div class="col-md-3" style="margin-top:50px">
+                    <div class="card" style="text-align: center">
                         <div class="card-body">
-                            <img class="card-img-top" src="{{i[2]}}">
-                            <p class="text-white">{{i[0]}}</p>
-                            <h4 class="text-white">{{i[1]}}</h4>
+                            <img class="card-img-top" src="{{ i[2] }}">
+                            <h4 class="k" style="text-align: center">{{ i[0] }}</h4>
+                            <h8 class="k" style="text-align: center">{{ i[1] }}</h8><br>
                         </div>
                     </div>
                 </div>
