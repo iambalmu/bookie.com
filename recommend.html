@@ -11,10 +11,13 @@
 "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
 	</script>
 	<script src=
-"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">Wicked: The Life and Times of the Wicked Witch of the West
 	</script>
 </head>
+
 <style>
+
+
 	.card-img-top{
 		display: block;
         margin-left: auto;
@@ -54,7 +57,7 @@
 			</div>
 			<ul class="nav navbar-nav" style="">
 				<li><a href="/">Home</a></li>
-				<li><a href="/recommend" style="border-bottom: 2px solid #ccc">Find recommendations</a></li>
+				<li><a href="/recommend" style="border-bottom: 5px solid #ccc">Find recommendations</a></li>
 				<li><a href="/author">Explore Creators</a></li>
 				<li><a href="/top50">Top books</a></li>
                 <li><a href="#">Connect</a></li>
@@ -69,37 +72,37 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="hea" style="font-size:50px">Shoot your favourite book for finding more such books!!!</h1>
-                <form action="/recommend_books" method="post">
-                      <input name="user_input" type="text" class="form-control"><br>
-                    <input type="submit" class="btn btn-lg btn-warning">
+
+
+                <form action="/recommend_books" method="post" id="form">
+                    <input name="user_input" type="text" class="form-control" id="inputEl"><br>
+                    <input type="submit" value="Search" class="btn btn-lg btn-warning" id="btnEl" onsubmit="printText()" >
                 </form>
             </div>
-            {% if data %}
-               <div style="display: flex; width: 90%; justify-content: center">
 
-                   <div><h4 style="text-align: center " > More books related to :  </h4></div>
+
+
+
+
+            {% if data %}
+
+
+<div style="display: flex; width: 90%; justify-content: center">
+
+                   <div><h4 style="text-align: center " > More books related to : {{k}} </h4></div>
                    <div style="flex-shrink: 4;flex-grow: 5"> <h4 id="printEl"> </h4></div>
                </div>
-         <script>
-             function getData(){
-                     var username = document.getElementsByClassName("form-control");
-                }
-             let inputEl=document.getElementById("inputEl")
-             let  printEl =document.getElementById("printEl")
-             let btnEl = document.getElementById("btnEl")
-             function printText() {
-                 let InputItem =inputEl.value;
-                 printEl.textContent=InputItem;
-             }
-         </script>
 
+        </div>
+        </div>
+    <div style="padding-left:80px ; padding-right: 80px;display: flex; flex-direction: column; width: 100%;justify-content: center; ">
              {% for i in data %}
-                 <div class="col-md-3" style="margin-top:50px">
+                 <div class="col-md-3" style="width: 100%;">
                     <div class="card" style="text-align: center">
-                        <div class="card-body">
-                            <img class="card-img-top" src="{{ i[2] }}">
-                            <h4 class="k" style="text-align: center">{{ i[0] }}</h4>
-                            <h8 class="k" style="text-align: center">{{ i[1] }}</h8><br>
+                        <div class="card-body" style="padding: 10px; margin-top: 10px;width: 40%;margin-left: 380px; box-shadow: 2px 1px grey;">
+                            <img class="card-img-top" src="{{ i[2] }}" style="width: 30%;">
+                            <h4 class="k" style="text-align: center;font-size: 25px;">{{ i[0] }}</h4>
+                            <h8 class="k" style="text-align: center;font-size: 18px;">{{ i[1] }}</h8><br>
                         </div>
                     </div>
                 </div>
@@ -108,10 +111,8 @@
             {% endif %}
 
 
+</div>
 
-
-        </div>
-    </div>
 
 </body>
 </html>
