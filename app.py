@@ -33,8 +33,8 @@ def recommend_ui():
 def recommend():
     user_input = request.form.get('user_input')
     index = np.where(final_fil.index == user_input)[0][0]
-    similar_items = sorted(list(enumerate(sim[index])), key=lambda x: x[1], reverse=True)[1:5]
-
+    similar_items = sorted(list(enumerate(sim[index])), key=lambda x: x[1], reverse=True)[1:20]
+    k=sorted(list(enumerate(sim[index])), key=lambda x: x[1], reverse=True)[0]
     data = []
     for i in similar_items:
         item = []
@@ -45,9 +45,14 @@ def recommend():
 
         data.append(item)
 
-    print(data)
 
-    return render_template('recommend.html',data=data)
+    data2=[]
+    temp_df2 = book[book['Book-Title'] == final_fil.index[k[0]]]
+    data2.append(list(temp_df2.drop_duplicates('Book-Title')['Book-Title'].values))
+    print(data)
+    k=data2[0][0]
+    print(k)
+    return render_template('recommend.html',data=data,k=k)
 
 
 @app.route('/author')
