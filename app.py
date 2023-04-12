@@ -54,10 +54,36 @@ def recommend():
     print(k)
     return render_template('recommend.html',data=data,k=k)
 
+@app.route('/find_books',methods=['post'])
+def find():
+    user_input = request.form.get('user_input')
+    index = np.where(final_fil.index == user_input)[0][0]
+    similar_items = sorted(list(enumerate(sim[index])), key=lambda x: x[1], reverse=True)[0:1]
+    k=sorted(list(enumerate(sim[index])), key=lambda x: x[1], reverse=True)[0]
+    data = []
+    for i in similar_items:
+        item = []
+        temp_df = book[book['Book-Title'] == final_fil.index[i[0]]]
+        item.extend(list(temp_df.drop_duplicates('Book-Title')['Book-Title'].values))
+        item.extend(list(temp_df.drop_duplicates('Book-Title')['Book-Author'].values))
+        item.extend(list(temp_df.drop_duplicates('Book-Title')['Image-URL-M'].values))
+        item.extend(list(temp_df.drop_duplicates('Book-Title')['Year-Of-Publication'].values))
+        item.extend(list(temp_df.drop_duplicates('Book-Title')['Publisher'].values))
+        data.append(item)
 
-@app.route('/author')
+
+
+    print(data)
+
+    return render_template('find.html',data=data)
+
+@app.route('/find')
 def author():
-    return render_template('author.html')
+    return render_template('find.html')
+
+@app.route('/connect')
+def connectwithme():
+    return render_template('connect.html')
 
 if __name__=='__main__':
     app.run(debug=True)

@@ -5,6 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	
 	<link rel="stylesheet" href=
 "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<script src=
@@ -16,10 +18,10 @@
 </head>
 <style>
 
+
 	.card-img-top{
 		display: block;
-        margin-left: auto;
-         margin-right: auto;
+        margin: auto;
          width: 50%;
 
 
@@ -64,30 +66,32 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="/">Home</a></li>
-				<li><a href="/recommend">Find recommendations</a></li>
-				<li><a href="/author">Explore Creators</a></li>
+				<li><a href="/find">Find Books</a></li>
+				<li><a href="/recommend" >Find recommendations</a></li>
+
 				<li><a href="/top50" style="border-bottom: 5px solid #ccc">Top books</a></li>
-                <li><a href="#">Connect</a></li>
+                <li><a href="/connect">Connect</a></li>
 			</ul>
 		</div>
 	</nav>
 	<br>
 	<br>
-	 <div class="container">
-        <div class="row">
+	 <div class="container" style="text-align: center;">
+        <div class="row" style="display: flex;flex-direction: column;flex-wrap: nowrap;justify-content: center;">
             <div class="col-md-12">
                 <h1 class="hea" style="font-size:50px">Top 50 Books</h1>
             </div>
 
             {% for i in range(100) %}
-                <div class="col-md-3" style="margin-top:50px">
-                    <div class="card" style="text-align: center">
+                <div class="col-md-3" style="margin-top:50px;width: 90%;margin-left: 90px;">
+                    <div class="card" style="text-align: center;">
                         <div class="card-body">
-                            <img class="card-img-top" src="{{ image[i] }}">
+                            <img class="card-img-top" src="{{ image[i] }}" style="width:20%;">
                             <h5 class="k" style="text-align: center"><a target="_blank" href=" {{link[i]}}">{{ book_name[i] }}</a></h5>
                             <h8 class="k" style="text-align: center">{{ author[i] }}</h8><br>
                             <h8 class="k" style="text-align: center">{{ date[i] }}</h8><br>
                             <h8 class="k" style="text-align: center">{{ categories[i] }}</h8><br>
+							<h8 class="k" style="text-align: center">{{ summary[i] }}</h8><br>
                             <h9 class="link"> </h9>
                         </div>
                     </div>

@@ -3,6 +3,7 @@
 <head>
 	<title>Bookie.com</title>
 	<meta charset="utf-8">
+    <link rel="shortcut icon" href="favicon.ico">
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href=
@@ -57,10 +58,11 @@
 			</div>
 			<ul class="nav navbar-nav" style="">
 				<li><a href="/">Home</a></li>
+				<li><a href="/find">Find Books</a></li>
 				<li><a href="/recommend" style="border-bottom: 5px solid #ccc">Find recommendations</a></li>
-				<li><a href="/author">Explore Creators</a></li>
+
 				<li><a href="/top50">Top books</a></li>
-                <li><a href="#">Connect</a></li>
+                <li><a href="/connect">Connect</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -71,7 +73,7 @@
         <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="hea" style="font-size:50px">Shoot your favourite book for finding more such books!!!</h1>
+                <h1 class="hea" style="font-size:50px">Search your favourite book for finding more such books!!!</h1>
 
 
                 <form action="/recommend_books" method="post" id="form">
@@ -107,8 +109,8 @@
                     </div>
                 </div>
              {% endfor %}
-
             {% endif %}
+
 
 
 </div>
